@@ -11,6 +11,16 @@ enabled) runs the refresh sweeper in the same process. There is no separate
 worker, queue or cache to operate, and the templates and migrations are embedded
 in the binary.
 
+### HTTP listener address
+
+`HTTP_ADDR` controls the address and port where the JSON API and browse UI listen. It defaults to `:8080`, which listens on port 8080 on all interfaces. For a loopback-only development listener, use `127.0.0.1:8080`; for an explicit public interface, use an address such as `0.0.0.0:8080` and put TLS and access controls at the proxy or configure `TLS_CERT_FILE` and `TLS_KEY_FILE` in SoroVault.
+
+Set it in the environment before starting the service:
+
+```bash
+HTTP_ADDR=127.0.0.1:8080 sorovault serve
+```
+
 ## Deployment topology
 
 ```
